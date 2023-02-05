@@ -11,13 +11,8 @@
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [x] Barra de Pesquisa
-- [x] API de Noticias.
-- [x] Carregamento dos Artigos com formato de Esqueleto (Skeleton Loading).
-- [x] Ajuste na Documentação.
-- [x] Favoritos no Gerenciamento de Estado Global.
-- [x] Artigos no Gerenciamento de Estado Global.
-- [x] Lista de Favoritos.
+- [ ] Visualizar detalhes do Usuario.
+- [ ] Outros Chats
 
 ## 🤝 Colaboradores
 
