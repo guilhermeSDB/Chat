@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+</head>
+<body>
+  <div id="app">
+    <div id="top">
+      <div id="user-info">
+        <img 
+          src="https://randomuser.me/api/portraits/women/51.jpg" 
+          alt="Mulher asiatica com gorro preto, e óculos e cabelo preto curto"
+        >
+
+        <div id="user-status">
+
+          <strong>Cecilia Sassaki</strong>
+          <div class="status">
+            Online
+          </div>
+          
+        </div>
+      </div>
+
+      <div id="close-chat">
+        <i class="ph-x"></i>
+      </div>
+    </div>
+    <div id="messages">
+      <div id="last-seen">
+        Hoje 11:30
+      </div>
+
+      <div class="messages">
+
+      </div>
+    </div>
+    <form id="bottom">
+      <div class="input-wrapper">
+        <input type="text" placeholder="Digite sua mensagem" id="your-message">
+
+        <button onclick="handleSendMessage">
+          <i class="ph-paper-plane-right-fill"></i>
+        </button>
+
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const messages = document.querySelector('.messages');
+    const messagesWrapper = document.querySelector('#messages');
+    const inputMessage = document.querySelector('#your-message');
+    const form = document.querySelector('#bottom');
+    const ceciliaMessages = [
+      'Ola usuario',
+      'Tive uma ideia incrível para um projeto',
+      'E se a gente fizesse um chat moderno e responsivo em apenas uma semana?', 
+      '#boraCodar!🚀'
+    ];
+    let counter = 0;
+    form.addEventListener("submit", handleSendMessage, false);
+
+    if(messages.length > 0){
+      messages.lastElementChild.scrollIntoView();
+    }
+
+    function handleSendMessage(event) {
+      event.preventDefault();
+
+      const message = getUserMessage();
+      const messageTimeNow = getTimeNow();
+      const messageBox = createElementMessageBox(message, messageTimeNow, true);
+      messages.insertAdjacentHTML("afterbegin", messageBox);
+      clearInputMessage();
+      scrollToBottom();
+      
+      if(counter < ceciliaMessages.length){
+        setTimeout(answerUser, 1000);
+      }
+    }
+
+    function getUserMessage(){
+      return inputMessage.value;
+    }
+
+    function getTimeNow(){
+      return new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    }
+
+    function createElementMessageBox(message, time, isSendByYou) {
+      const sender = isSendByYou ? "message you" : "message";
+      return `
+        <div class="${sender}">
+          <div class="top">Você - ${time} </div>
+          <div class="body"><strong>${message}</strong></div>
+        </div>
+      `
+    }
+
+    function clearInputMessage(){
+      inputMessage.value = '';
+    }
+  
+    function scrollToBottom() {
+      const shouldScroll = messagesWrapper.scrollTop + messagesWrapper.clientHeight === messagesWrapper.scrollHeight;
+
+      if(!shouldScroll){
+        messagesWrapper.scrollTop = messagesWrapper.scrollHeight;
+      }
+    }
+  
+    function answerUser() {
+      
+      const message = ceciliaMessages[counter];
+      const messageTimeNow = getTimeNow();
+      const messageBox = createElementMessageBox(message, messageTimeNow, false);
+      messages.insertAdjacentHTML("afterbegin", messageBox);
+      counter++;
+      scrollToBottom();
+    }
+
+  </script>
+</body>
+</html>
