@@ -99,10 +99,11 @@
     }
 
     function createElementMessageBox(message, time, isSendByYou) {
-      const sender = isSendByYou ? "message you" : "message";
+      const senderType = isSendByYou ? "message you" : "message";
+      const sender = isSendByYou ? 'Você' : 'Cecilia Sassaki'
       return `
-        <div class="${sender}">
-          <div class="top">Você - ${time} </div>
+        <div class="${senderType}">
+          <div class="top">${sender} - ${time} </div>
           <div class="body"><strong>${message}</strong></div>
         </div>
       `
