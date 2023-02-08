@@ -7,13 +7,6 @@
 
 > Desafio 04 Rockseat - Chat.
 
-### Ajustes e melhorias
-
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
-
-- [ ] Visualizar detalhes do Usuario.
-- [ ] Outros Chats
-
 ## 🤝 Colaboradores
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
